@@ -10,7 +10,6 @@ function Layout() {
       <NavBar />
       <main style={{ minHeight: "25rem", overflow: "auto" }}>
         <Container>
-          <Basket></Basket>
           <Outlet />
         </Container>
       </main>
