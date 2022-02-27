@@ -32,7 +32,8 @@ function NavBar() {
       navigate(url);
     });
   };
-
+ // const basketQuantity = useSelector((store) => store.cartState.quantity);
+  const cartState = useSelector((store)=>store.cartState.cartItems);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -41,7 +42,7 @@ function NavBar() {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto positi">
+          <Nav className="me-auto ">
             <Link className="nav-item nav-link" to="/">
               Anasayfa
             </Link>
@@ -49,7 +50,7 @@ function NavBar() {
               About
             </Link>
 
-            <NavDropdown title="Api" id="collasible-nav-dropdown">
+            <NavDropdown title="Api" id="collapsible-nav-dropdown">
               <NavDropdown.Item>
                 <Link className="nav-item nav-link text-dark" to="/users">
                   Users
@@ -81,10 +82,10 @@ function NavBar() {
                 <a className="nav-item nav-link" onClick={() => logout()}>
                   Oturumu Kapat
                 </a>
-                <a onClick={() => handleShow()} className="nav-item nav-link">
+                <a onClick={() => handleShow()} className="nav-item nav-link ">{cartState.total}
                   <i class="bi bi-cart4"></i>
                   <span class="position-absolute top-18 start-100 translate-middle badge rounded-pill bg-danger">
-                    3
+                    {cartState.length}
                   </span>
                 </a>
                 <Basket></Basket>

@@ -1,5 +1,8 @@
-export const BasketState = {
+import{BasketService} from "../../services/basket.service"
+
+ const BasketState = {
   status: false,
+
 };
 
 export const ShopBasketReducer = (state = BasketState, action) => {
@@ -9,6 +12,7 @@ export const ShopBasketReducer = (state = BasketState, action) => {
         ...state,
         status: action.payload,
       };
+     
     default:
       return state;
   }

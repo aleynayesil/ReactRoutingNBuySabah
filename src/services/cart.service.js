@@ -1,5 +1,7 @@
 // cart ekleme çıkarama güncelleme adet artırma vs gibi işlemler için burada logicler yazılacak bize cart bilgisi döndürecek.
 
+import { CLEARALL } from "../store/action/cart.action";
+
 export const CartService = {
 	AddToCart: (newCartItem, stateCartItems) => {
 		const existingCartItem = stateCartItems.find((x) => x.id == newCartItem.id);
@@ -51,4 +53,49 @@ export const CartService = {
 			total: _total,
 		};
 	},
+	INCREASE:(id,stateCartItems)=>{
+		const newCartItems = stateCartItems.find((x) => x.id == id);	
+
+		let _total = 0;
+		if (newCartItems!=undefined) {
+			newCartItems.quantity+=1;
+
+			stateCartItems.forEach((cartItem) => {
+			_total += Number(cartItem.price) * Number(cartItem.quantity);
+			
+			});
+		}
+	
+
+		return {
+			cartItems: [...stateCartItems],
+			total: _total,
+		};
+	},
+	DECREASE:(id,stateCartItems)=>{
+		const newCartItems = stateCartItems.find((x) => x.id == id);	
+
+		let _total = 0;
+		if (newCartItems!=undefined) {
+			if (newCartItems.quantity>1) {
+				newCartItems.quantity-=1;
+			}
+			stateCartItems.forEach((cartItem) => {
+			_total += Number(cartItem.price) * Number(cartItem.quantity);
+			
+			});
+		}
+		return {
+			cartItems: [...stateCartItems],
+			total: _total,
+		};
+	},
+	CLEARALL:()=>{
+			
+		let _total=0;
+		return {
+			cartItems: [],
+			total:_total,
+		};
+	}
 };

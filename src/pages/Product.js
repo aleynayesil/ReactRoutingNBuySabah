@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Card, Col, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddToCart, RemoveFromCart } from '../store/action/cart.action';
 
@@ -22,7 +22,7 @@ function Product() {
 
 	return (
 		<div>
-			<Row md={3}>
+			<Row xs={1}  md={2} lg={3} >
 				{products.map((item, index) => {
 					return (
 						// <li key={index}>
